@@ -94,3 +94,99 @@ body::before {
     transform: translateX(6em);
   }
 }
+
+.line {
+  height: 1px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.line svg {
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  top: -50px;
+}
+
+.line svg path {
+  stroke-width: 2px;
+  stroke: #ff4d00;
+  fill: none;
+}
+
+.box {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  position: relative;
+  /* border: 1px solid #ff4d00; */
+  top: -20px;
+  z-index: 100;
+}
+
+/* From Uiverse.io by alexmaracinaru */
+.cta {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 10px;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 1;
+  left: 0;
+  display: block;
+  border-radius: 50px;
+  background: #ff4d07;
+  width: 45px;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+.cta span {
+  position: relative;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #f0f2f3;
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #ff4d07;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+  width: 100%;
+  background: #000000;
+}
+
+.cta-active:before {
+  width: 100%;
+  background: #000000;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+.cta:active {
+  transform: scale(0.95);
+}

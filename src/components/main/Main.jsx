@@ -17,50 +17,45 @@ export default function Main() {
   const section2 = useRef();
 
   return (
-    <>
-      <main ref={container}>
-        <Leva hidden={false} />
-        <Canvas
-          shadows
-          dpr={[1, 1.5]}
-          gl={{ antialias: true }}
-          className="canvas"
-          camera={{ position: [0, 0, 5], fov: 30 }}
-          eventSource={container}
-        >
-          <Suspense fallback={null}>
-            <View track={section1} index={1}>
-              <Scene1 />
-              {/* <Effects /> */}
-            </View>
-            <View track={section2} index={2}>
-              <Scene2 />
-              {/* <Effects /> */}
-            </View>
-          </Suspense>
+    <main ref={container}>
+      <Leva hidden={false} />
+      <Canvas
+        shadows
+        dpr={[1, 1.5]}
+        gl={{ antialias: true }}
+        className="canvas"
+        camera={{ position: [0, 0, 5], fov: 30 }}
+        eventSource={container}
+      >
+        <Suspense fallback={null}>
+          <View track={section1} index={1}>
+            <Scene1 />
+            <Effects />
+          </View>
+          <View track={section2} index={2}>
+            <Scene2 />
+            {/* <Effects /> */}
+          </View>
+        </Suspense>
 
-          <Animations />
-        </Canvas>
+        <Animations />
+      </Canvas>
 
-        {/* main start */}
+      {/* main start */}
 
-        <div className="wrap relative h-[150vh]   border-blue-600 border section1 ">
-          <div
-            className="sticky top-0 wrap h-screen w-full "
-            ref={section1}
-          ></div>
+      <div className="wrap relative h-[150vh]  section1 ">
+        <div
+          className="sticky top-0 wrap h-screen w-full "
+          ref={section1}
+        ></div>
 
-          <Section1 />
-        </div>
+        <Section1 />
+      </div>
 
-        <div className=" wrap relative h-[200vh] border-yellow-600 border section2 ">
-          <div
-            className="sticky top-0 h-screen w-full border-2 "
-            ref={section2}
-          ></div>
-          <Section2 />
-        </div>
-      </main>
-    </>
+      <div className=" wrap relative h-[200vh]  section2 ">
+        <div className="sticky top-0 h-screen w-full  " ref={section2}></div>
+        <Section2 />
+      </div>
+    </main>
   );
 }

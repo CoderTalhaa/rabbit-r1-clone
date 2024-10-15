@@ -13,7 +13,7 @@ export function Rabbit({ wireframe, ...props }) {
   const { nodes, materials } = useGLTF("/models/rabbit.glb");
   const videoRef = useRef();
 
-  const { anim } = useModelStore();
+  const { light } = useModelStore();
 
   const imgaeTexture = useTexture("/rabbit-lost.png");
   imgaeTexture.toneMappingExposure = 6;
@@ -24,7 +24,7 @@ export function Rabbit({ wireframe, ...props }) {
 
   useEffect(() => {
     const video = document.createElement("video");
-    video.src = "/Rabbit_1.mp4";
+    video.src = "/rabbitCarrot.mp4";
     video.crossOrigin = "Anonymous";
     video.loop = true;
     video.muted = true;
@@ -44,8 +44,23 @@ export function Rabbit({ wireframe, ...props }) {
   const videoMaterial = new THREE.MeshBasicMaterial({
     map: videoRef.current,
   });
-  const imageMaterial = new THREE.MeshBasicMaterial({
+
+  const emissiveIntensity = light ? 1 : 0;
+  const opacity = light ? 0 : 1;
+
+  const imageMaterial = new THREE.MeshStandardMaterial({
     map: imgaeTexture,
+    metalness: 1,
+    roughness: 1,
+    emissive: new THREE.Color(0xfb4700),
+    emissiveIntensity: emissiveIntensity,
+    transparent: true,
+  });
+
+  const imageMaterial1 = new THREE.MeshBasicMaterial({
+    map: imgaeTexture,
+    transparent: true,
+    opacity: opacity,
   });
 
   const cameraRef = useRef();
@@ -122,6 +137,14 @@ export function Rabbit({ wireframe, ...props }) {
         receiveShadow
         geometry={nodes.screen.geometry}
         material={wireframe ? imageMaterial : videoMaterial}
+      />
+      <mesh
+        ref={screenRef}
+        name="screen"
+        castShadow
+        receiveShadow
+        geometry={nodes.screen.geometry}
+        material={wireframe && imageMaterial1}
       />
       <mesh
         ref={usbcRef}

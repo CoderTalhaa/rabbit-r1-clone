@@ -1,16 +1,22 @@
+import useModelStore from "@/store/useStore";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import React from "react";
 
 export default function Effects() {
+  const { light } = useModelStore();
   return (
-    <EffectComposer>
-      <Bloom
-        luminanceThreshold={0.7}
-        luminanceSmoothing={0.8}
-        intensity={3}
-        // levels={10}
-        mipmapBlur
-      />
-    </EffectComposer>
+    <>
+      {light && (
+        <EffectComposer>
+          <Bloom
+            luminanceThreshold={0}
+            luminanceSmoothing={0.3}
+            intensity={3}
+            levels={3}
+            mipmapBlur
+          />
+        </EffectComposer>
+      )}
+    </>
   );
 }

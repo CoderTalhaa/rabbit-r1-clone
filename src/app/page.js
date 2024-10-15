@@ -1,12 +1,12 @@
 "use client";
 import LoadingScreen from "@/components/utils/LoadingScreen";
 import Main from "@/components/main/Main";
-import SvgReveal from "@/components/utils/SvgReveal";
 import useModelStore from "@/store/useStore";
 import { useProgress } from "@react-three/drei";
 import { AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 import React, { useEffect, useState } from "react";
+import Cursor from "@/components/utils/Cursor";
 
 export default function Home() {
   const [isloading, setIsLoading] = useState(true);
@@ -45,6 +45,8 @@ export default function Home() {
   };
   return (
     <>
+      <Cursor />
+
       {/* <AnimatePresence mode="wait">
         {isloading && <LoadingScreen progress={progress} />}
       </AnimatePresence>
@@ -53,7 +55,7 @@ export default function Home() {
       <div className="absolute top-0 left-0 w-full h-screen -z-[1]  videobg">
         <video
           className="w-full h-full object-cover"
-          src="Rabbits_factory.mp4"
+          src="rabbits_fact.mp4"
           preload="metadata"
           autoPlay
           loop

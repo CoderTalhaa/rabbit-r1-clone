@@ -24,7 +24,7 @@ export default function Main() {
         dpr={[1, 1.5]}
         gl={{ antialias: true }}
         className="canvas"
-        camera={{ position: [0, 0, 5], fov: 30 }}
+        camera={{ position: [2, 0.6, 4.3], fov: 30 }}
         eventSource={container}
       >
         <Suspense fallback={null}>

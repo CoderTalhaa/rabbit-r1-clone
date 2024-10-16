@@ -7,11 +7,15 @@ import { AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 import React, { useEffect, useState } from "react";
 import Cursor from "@/components/utils/Cursor";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import SvgReveal from "@/components/utils/SvgReveal";
 
 export default function Home() {
   const [isloading, setIsLoading] = useState(true);
-  const [loadMain, setLoadMain] = useState(true);
+  const [loadMain, setLoadMain] = useState(false);
   const { progress } = useProgress();
+
+  const isDesktop = useMediaQuery("(min-width: 768px)", true);
 
   const { anim } = useModelStore();
 
@@ -45,12 +49,12 @@ export default function Home() {
   };
   return (
     <>
-      <Cursor />
+      {isDesktop && <Cursor />}
 
-      {/* <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait">
         {isloading && <LoadingScreen progress={progress} />}
       </AnimatePresence>
-      {!isloading && <SvgReveal setLoadMain={setLoadMain} />} */}
+      {!isloading && <SvgReveal setLoadMain={setLoadMain} />}
 
       <div className="absolute top-0 left-0 w-full h-screen -z-[1]  videobg">
         <video

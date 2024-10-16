@@ -13,7 +13,7 @@ export function Rabbit({ wireframe, ...props }) {
   const { nodes, materials } = useGLTF("/models/rabbit.glb");
   const videoRef = useRef();
 
-  const { light } = useModelStore();
+  const { light, anim } = useModelStore();
 
   const imgaeTexture = useTexture("/rabbit-lost.png");
   imgaeTexture.toneMappingExposure = 6;
@@ -72,27 +72,30 @@ export function Rabbit({ wireframe, ...props }) {
   const voiceButtonRef = useRef();
   const volumeRef = useRef();
 
-  // useGSAP(() => {
-  //   gsap.from(
-  //     [
-  //       caseRef.current.position,
-  //       capRef.current.position,
-  //       usbcRef.current.position,
-  //       cameraRef.current.position,
-  //       lens1Ref.current.position,
-  //       volumeRef.current.position,
-  //       voiceButtonRef.current.position,
-  //       screenRef.current.position,
-  //     ],
-  //     {
-  //       duration: 1,
-  //       y: 50,
-  //       stagger: 0.2,
-  //       ease: "power2.out",
-  //       delay: 1,
-  //     }
-  //   );
-  // }, []);
+  useGSAP(() => {
+    console.log(anim);
+    if (anim === !"start") return;
+
+    gsap.from(
+      [
+        caseRef.current.position,
+        capRef.current.position,
+        usbcRef.current.position,
+        cameraRef.current.position,
+        lens1Ref.current.position,
+        volumeRef.current.position,
+        voiceButtonRef.current.position,
+        screenRef.current.position,
+      ],
+      {
+        duration: 1,
+        y: 50,
+        stagger: 0.2,
+        ease: "power2.out",
+        delay: 1,
+      }
+    );
+  }, []);
 
   return (
     <group {...props} dispose={null}>

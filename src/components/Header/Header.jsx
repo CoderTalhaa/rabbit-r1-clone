@@ -45,7 +45,7 @@ export default function Header() {
   return (
     <motion.header
       variants={{
-        hidden: { backgroundColor: "transparent" },
+        hidden: { backgroundColor: "#00000000" },
         visible: { backgroundColor: "black" },
       }}
       animate={hidden ? "hidden" : "visible"}
@@ -62,12 +62,12 @@ export default function Header() {
         <div>
           <Link href="/">
             <Image
-              src="./logo.svg"
+              src="/logo.svg"
               alt="logo"
               width={100}
               height={100}
               priority
-              style={{ height: "auto" }}
+              style={{ height: 'auto', width: '100px' }}
             />
           </Link>
         </div>

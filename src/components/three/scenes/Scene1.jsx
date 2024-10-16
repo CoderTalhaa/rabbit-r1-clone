@@ -1,6 +1,5 @@
 import { Environment, Float } from "@react-three/drei";
 import React, { useEffect, useRef } from "react";
-import { useControls } from "leva";
 import { Rabbit } from "../Rabbit";
 import useModelStore from "@/store/useStore";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -19,11 +18,6 @@ export default function Scene1() {
   useEffect(() => {
     setModel1Ref(model1Ref.current);
   }, [setModel1Ref]);
-
-  const { position, rotation } = useControls({
-    position: { value: [1, -0.5, 0], step: 0.1 },
-    rotation: { value: [0, 0, 0], step: 0.1 },
-  });
 
   const { scrollYProgress } = useScroll({
     target: ".section1",

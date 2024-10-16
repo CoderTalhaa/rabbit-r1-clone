@@ -1,10 +1,8 @@
-import useModelStore from "@/store/useStore";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import SvgLine from "../utils/SvgLine";
 
 export default function Section2() {
-  const { cursorPosition } = useModelStore();
 
   return (
     <>

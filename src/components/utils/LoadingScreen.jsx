@@ -66,7 +66,7 @@ export default function LoadingScreen({ progress }) {
               initial="initial"
               exit="exit"
               d={initialPath}
-              className="fill-[#131111]"
+              className="fill-[#ce4008]"
             ></motion.path>
           </svg>
         </>

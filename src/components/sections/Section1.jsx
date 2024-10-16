@@ -40,9 +40,8 @@ export default function Section1() {
         trigger: textRef.current,
         start: "top bottom-=25%",
         end: "bottom top+=35%",
-        scrub: 0.5,
-        // toggleActions: "play none none none",
-        markers: true,
+        toggleActions: "play none none none",
+        // markers: true,
       },
     });
 
@@ -61,7 +60,8 @@ export default function Section1() {
     tl.fromTo(
       textRef2.current,
       { x: -100, opacity: 0 },
-      { x: 0, opacity: 1, duration: 1, ease: "back.inOut" }
+      { x: 0, opacity: 1, duration: 1, ease: "back.inOut" },
+      "-0.2"
     );
 
     //! text ref 3 animation
@@ -81,13 +81,14 @@ export default function Section1() {
         z: 0,
         skewX: 0,
         y: 0,
-        duration: 1,
+        duration: 0.7,
         ease: "power4.out",
         stagger: {
           amount: 0.8,
           from: "random",
         },
-      }
+      },
+      "-0.2"
     );
 
     return () => {
@@ -257,7 +258,6 @@ const Reveal = ({ children, width = "fit-content" }) => {
   const slideAnimation = useAnimation();
 
   useEffect(() => {
-    console.log(isInView);
     if (isInView) {
       opacityAnimation.start("visible");
       slideAnimation.start("visible");
